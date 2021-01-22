@@ -4,7 +4,7 @@ const App = () => {
 
 
   return (
-    <div>INITIALIZATION</div>
+    <div>Init</div>
   )
 }
 
