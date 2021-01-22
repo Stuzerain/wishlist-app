@@ -3,7 +3,6 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const db = require('../database/index.js');
-const People = require('../database/People.js');
 
 // middleware
 app.use(express.json());

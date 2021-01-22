@@ -1,7 +1,9 @@
-const mongoose = require('mongoose');
-mongoose.set('useNewUrlParser', true);
-mongoose.set('useUnifiedTopology', true);
+const { Client } = require('pg');
 
-const db = mongoose.connect('mongodb://localhost/Wishlist');
+const client = new Client({
+  host: process.env.DB_HOST,
+  username: process.env.DB_USER,
+  password: process.env.DB_PASS
+});
 
-module.exports = db;
+module.exports = client;
