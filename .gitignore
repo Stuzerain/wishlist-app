@@ -6,6 +6,7 @@
 /dist
 /tmp
 /out-tsc
+bundle.js
 
 # Runtime data
 pids
