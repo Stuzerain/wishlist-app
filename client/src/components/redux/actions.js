@@ -1,6 +1,8 @@
 import axios from 'axios';
 import 'regenerator-runtime/runtime.js';
 
+import { useSelector } from 'react-redux';
+
 export const GET_PEOPLE = 'home:GET_PEOPLE';
 export const SELECT_PERSON = 'home:SELECT_PERSON';
 
@@ -17,12 +19,12 @@ export const getPeople = () =>
     }
   };
 
-export const selectPerson = () =>
+export const selectPerson = (input) =>
   async dispatch => {
     try {
       dispatch({
         type: SELECT_PERSON,
-        payload: {name: 'tested'}
+        payload: input
       })
     } catch (error) {
       // TODO handle error

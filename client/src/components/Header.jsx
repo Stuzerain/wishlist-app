@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 // importing bootstrap components -- importing each separately is better for
 // runtime than ex. "import {x, y, z} from 'react-bootstrap'"
@@ -8,10 +8,31 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
-const Header = ( { people, selected } ) => {
+// redux imports
+import { useSelector, useDispatch } from 'react-redux';
+import { getPeople, selectPerson } from './redux/actions.js';
+
+const Header = ( ) => {
+  const dispatch = useDispatch();
+  const { people, selected } = useSelector(s => s.home);
+
+  useEffect(() => {
+    dispatch(getPeople())
+
+  }, []);
+
+  // .then(() => {
+  //   console.log(people)
+  //   return dispatch(selectPerson(people[0]))});
 
   const peopleDropdown = people.map((person, index) => (
-    <Dropdown.Item key={index}>{person.name}</Dropdown.Item>
+    <Dropdown.Item
+      key={index}
+      onClick={() => {
+        dispatch(selectPerson(person))
+        }}>
+        {person.name}
+    </Dropdown.Item>
   ));
 
   return (
@@ -28,7 +49,7 @@ const Header = ( { people, selected } ) => {
           </DropdownButton>
         </Col>
         <Col>
-          {selected.name}
+          {selected.name ? selected.name : 'undefined'}
         </Col>
       </Row>
     </Container>
