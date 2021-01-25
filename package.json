@@ -19,18 +19,25 @@
   },
   "homepage": "https://github.com/Stuzerain/wishlist-app#readme",
   "dependencies": {
+    "axios": "^0.21.1",
     "bootstrap": "^4.6.0",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "pg": "^8.5.1",
     "react": "^17.0.1",
     "react-bootstrap": "^1.4.3",
-    "react-dom": "^17.0.1"
+    "react-dom": "^17.0.1",
+    "react-redux": "^7.2.2",
+    "redux": "^4.0.5",
+    "redux-thunk": "^1.0.3",
+    "regenerator-runtime": "^0.13.7"
   },
   "devDependencies": {
     "@babel/core": "^7.12.10",
+    "@babel/plugin-transform-runtime": "^7.12.10",
     "@babel/preset-env": "^7.12.11",
     "@babel/preset-react": "^7.12.10",
+    "@babel/runtime": "^7.12.5",
     "babel-loader": "^8.2.2",
     "nodemon": "^2.0.7",
     "webpack": "^4.44.2",

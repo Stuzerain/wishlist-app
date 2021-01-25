@@ -1,10 +1,19 @@
-import React, {useState} from 'react';
+import React, { useState, useEffect } from 'react';
 import Header from './Header.jsx';
+
+// redux imports
+import { useSelector, useDispatch } from 'react-redux';
+import { getPeople, selectPerson } from './redux/actions.js';
 
 const App = () => {
 
-  const [people, setPeople] = useState([]);
-  const [selected, setSelected] = useState(people[0])
+  const dispatch = useDispatch();
+  const { people, selected } = useSelector(s => s.home);
+
+  useEffect(() => {
+    dispatch(getPeople());
+    dispatch(selectPerson());
+  }, []);
 
   return (
     <div>

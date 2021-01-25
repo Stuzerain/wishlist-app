@@ -11,7 +11,7 @@ import Col from 'react-bootstrap/Col';
 const Header = ( { people, selected } ) => {
 
   const peopleDropdown = people.map((person, index) => (
-    <Dropdown.Item key={index}>{person}</Dropdown.Item>
+    <Dropdown.Item key={index}>{person.name}</Dropdown.Item>
   ));
 
   return (
@@ -28,7 +28,7 @@ const Header = ( { people, selected } ) => {
           </DropdownButton>
         </Col>
         <Col>
-          {selected}
+          {selected.name}
         </Col>
       </Row>
     </Container>
