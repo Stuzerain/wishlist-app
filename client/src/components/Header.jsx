@@ -16,21 +16,14 @@ const Header = ( ) => {
   const dispatch = useDispatch();
   const { people, selected } = useSelector(s => s.home);
 
-  useEffect(() => {
-    dispatch(getPeople())
 
-  }, []);
-
-  // .then(() => {
-  //   console.log(people)
-  //   return dispatch(selectPerson(people[0]))});
-
+  // dropdown menu for selecting person being viewed
   const peopleDropdown = people.map((person, index) => (
     <Dropdown.Item
       key={index}
       onClick={() => {
         dispatch(selectPerson(person))
-        }}>
+      }}>
         {person.name}
     </Dropdown.Item>
   ));
@@ -49,7 +42,7 @@ const Header = ( ) => {
           </DropdownButton>
         </Col>
         <Col>
-          {selected.name ? selected.name : 'undefined'}
+          {selected.name ? selected.name : 'no selected'}
         </Col>
       </Row>
     </Container>

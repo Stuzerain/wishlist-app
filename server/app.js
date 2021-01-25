@@ -12,9 +12,9 @@ app.use('/', express.static('./client/public'));
 
 app.get('/API/people', (req, res) => {
   return res.json([
-    {name: 'a'},
-    {name: 'b'},
-    {name: 'c'}
+    {name: 'a', ideas: ['x', 'y', 'z']},
+    {name: 'b', ideas: ['q', 'r', 'x']},
+    {name: 'c', ideas: ['d', 'f', 'g']}
   ])
   // TODO -- add ability to add new people
 });
