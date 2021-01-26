@@ -5,4 +5,4 @@ const HOST = 'localhost';
 
 app.listen(PORT, HOST, () => {
   console.log(`listening at http://${HOST}:${PORT}`)
-})
+});
