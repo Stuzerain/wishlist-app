@@ -1,14 +1,22 @@
-import React, {useState} from 'react';
+import React, { useEffect } from 'react';
 import Header from './Header.jsx';
+import Body from './Body.jsx';
+
+import { useSelector, useDispatch } from 'react-redux';
+import { getPeople, selectPerson } from './redux/actions.js';
 
 const App = () => {
+  const dispatch = useDispatch();
 
-  const [people, setPeople] = useState([]);
-  const [selected, setSelected] = useState(people[0])
+  // dispatch people state before any components load
+  useEffect(() => {
+    dispatch(getPeople())
+  }, []);
 
   return (
     <div>
-      <Header people={people} selected={selected} />
+      <Header />
+      <Body />
     </div>
   )
 }
