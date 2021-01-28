@@ -10,18 +10,23 @@ const InfoBlock = () => {
 
   const { selected } = useSelector(s => s.home);
 
-  const ideas = selected.ideas.map((idea, index) => (
-    <Col key={index}>
+  const mapper = (input) => {
+    return input.ideas.map((idea, index) => {
+      <Col key={index}>
         {idea}
-    </Col>
-  ));
+      </Col>
+    })
+  }
 
   return (
     <Container style={{textAlign: 'center'}}>
       <Row>
         <Col>Name: {selected.name}</Col>
+        <Col>Relationship: {selected.relationship}</Col>
       </Row>
-      <Row>{ideas}</Row>
+      <Row>
+        <Col>{ selected.ideas ? mapper(selected) : 'no ideas yet' }</Col>
+      </Row>
     </Container>
   )
 }

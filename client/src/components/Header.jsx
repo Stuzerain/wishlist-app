@@ -4,13 +4,14 @@ import React, { useEffect } from 'react';
 // runtime than ex. "import {x, y, z} from 'react-bootstrap'"
 import DropdownButton from 'react-bootstrap/DropdownButton';
 import Dropdown from 'react-bootstrap/Dropdown';
+import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
 // redux imports
 import { useSelector, useDispatch } from 'react-redux';
-import { getPeople, selectPerson } from './redux/actions.js';
+import { getPeople, selectPerson, toggleView } from './redux/actions.js';
 
 const Header = ( ) => {
   const dispatch = useDispatch();
@@ -22,6 +23,7 @@ const Header = ( ) => {
     <Dropdown.Item
       key={index}
       onClick={() => {
+        dispatch(toggleView(true))
         dispatch(selectPerson(person))
       }}>
         {person.name}
@@ -42,7 +44,12 @@ const Header = ( ) => {
           </DropdownButton>
         </Col>
         <Col>
-          {selected.name ? selected.name : 'no selected'}
+          <Button
+            onClick={() => {
+              dispatch(toggleView(false))
+            }}>
+              Add a person
+            </Button>
         </Col>
       </Row>
     </Container>

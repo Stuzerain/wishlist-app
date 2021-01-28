@@ -1,9 +1,11 @@
 const { Client } = require('pg');
+const dotenv = require('dotenv')
+const credentials = dotenv.config().parsed;
 
 const client = new Client({
-  host: process.env.DB_HOST,
-  username: process.env.DB_USER,
-  password: process.env.DB_PASS
+  host: credentials.DB_HOST,
+  user: credentials.DB_USER,
+  password: credentials.DB_PASS
 });
 
 module.exports = client;
