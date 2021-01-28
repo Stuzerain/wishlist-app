@@ -7,10 +7,20 @@ import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 
+import { useSelector, useDispatch } from 'react-redux';
+import { getPeople } from './redux/actions.js';
+
 const AddForm = () => {
 
   const [name, setName] = useState('');
   const [relationship, setRelationship] = useState('');
+
+  const handleSubmit = () => {
+    axios.post('/API/people', {
+      name: name,
+      relationship: relationship
+    })
+  }
 
   return (
     <Form style={{width: '65%', margin: 'auto'}}>
@@ -32,7 +42,7 @@ const AddForm = () => {
         </Form.Text>
       </Form.Group>
 
-      <Button>Submit</Button>
+      <Button onClick={handleSubmit} type='submit'>Submit</Button>
 
     </Form>
     )
