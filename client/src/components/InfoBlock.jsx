@@ -18,18 +18,15 @@ const InfoBlock = () => {
     })
   }
 
-  // const ideas = selected.ideas.map((idea, index) => (
-  //   <Col key={index}>
-  //       {idea}
-  //   </Col>
-  // ));
-
   return (
     <Container style={{textAlign: 'center'}}>
       <Row>
         <Col>Name: {selected.name}</Col>
+        <Col>Relationship: {selected.relationship}</Col>
       </Row>
-      <Row> { selected.ideas ? mapper(selected) : 'no ideas yet' } </Row>
+      <Row>
+        <Col>{ selected.ideas ? mapper(selected) : 'no ideas yet' }</Col>
+      </Row>
     </Container>
   )
 }

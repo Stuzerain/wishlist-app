@@ -3,13 +3,14 @@ import Header from './Header.jsx';
 import Body from './Body.jsx';
 
 import { useSelector, useDispatch } from 'react-redux';
-import { getPeople, selectPerson } from './redux/actions.js';
+import { getPeople, selectPerson, toggleView } from './redux/actions.js';
 
 const App = () => {
   const dispatch = useDispatch();
 
   // dispatch people state before any components load
   useEffect(() => {
+    dispatch(toggleView())
     dispatch(getPeople())
   }, []);
 
