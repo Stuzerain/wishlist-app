@@ -1,9 +1,10 @@
-import { GET_PEOPLE, SELECT_PERSON, TOGGLE_VIEW, GET_IDEAS } from './actions';
+import { GET_PEOPLE, SELECT_PERSON, TOGGLE_VIEW, GET_IDEAS, ADD_IDEA } from './actions';
 
 const initialState = {
   people: [],
   selected: {},
   view: false,
+  ideas: [],
 };
 
 export default function reducer(
@@ -30,6 +31,11 @@ export default function reducer(
       return {
         ...state,
         ideas: payload,
+      }
+    case ADD_IDEA:
+      return {
+        ...state,
+        ideas: {...ideas, payload},
       }
     default:
       return state;

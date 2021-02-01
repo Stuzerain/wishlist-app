@@ -52,6 +52,7 @@ app.post('/API/ideas', (req, res) => {
 
   pgres.query(ideaInsertQuery(idea, notes))
     .then(result => pgres.query(peopleIdeaJoinInsert(selected.peopleid, result.rows[0].ideaid)))
+    .then(() => res.json('successful post to ideas'))
     .catch(err => {
       console.error(err);
       return res.status(400).send({error: 'error adding idea'});

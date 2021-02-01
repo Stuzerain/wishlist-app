@@ -11,12 +11,13 @@ import { useSelector, useDispatch } from 'react-redux';
 import { getPeople, getIdeas } from './redux/actions.js';
 
 const AddIdeaForm = () => {
-
-  const { selected } = useSelector(s => s.home);
+  const dispatch = useDispatch();
+  const { selected, ideas } = useSelector(s => s.home);
 
   const [idea, setIdea] = useState('');
   const [notes, setNotes] = useState('');
 
+  // could probably use some refinement--posts to API and then updates state by issuing a get request immediately afterward
   const handleSubmit = () => {
     axios.post('/API/ideas', {
       idea: idea,
@@ -24,7 +25,9 @@ const AddIdeaForm = () => {
       selected: selected
     })
     .then(() => {
-      return useDispatch(getIdeas(selected));
+      setIdea('');
+      setNotes('');
+      return dispatch(getIdeas(selected))
     })
   }
 
@@ -32,7 +35,7 @@ const AddIdeaForm = () => {
     <Form style={{width: '65%', margin: 'auto'}}>
       <Form.Group>
         <Form.Label>Idea</Form.Label>
-        <Form.Control type='idea' placeholder='Some idea'
+        <Form.Control type='idea' placeholder='Some idea' value={idea}
           onChange={event => {setIdea(event.target.value)}} />
         <Form.Text className='text-muted'>
           Enter a gift idea for this person.
@@ -41,7 +44,7 @@ const AddIdeaForm = () => {
 
       <Form.Group>
         <Form.Label>Notes</Form.Label>
-        <Form.Control type='notes' placeholder='Some notes'
+        <Form.Control type='notes' placeholder='Some notes' value={notes}
           onChange={event => {setNotes(event.target.value)}} />
         <Form.Text className='text-muted'>
           Enter any additional notes/thoughts for this gift idea.

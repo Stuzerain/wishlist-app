@@ -7,6 +7,7 @@ export const GET_PEOPLE = 'home:GET_PEOPLE';
 export const SELECT_PERSON = 'home:SELECT_PERSON';
 export const TOGGLE_VIEW = 'home:TOGGLE_VIEW'
 export const GET_IDEAS = 'home:GET_IDEAS'
+export const ADD_IDEA = 'home:ADD_IDEA'
 
 export const getPeople = () =>
   async dispatch => {
@@ -57,3 +58,17 @@ export const selectPerson = (input) =>
         // TODO handle error
       }
     };
+
+  export const addIdea = (input) =>
+    async dispatch => {
+      try {
+        dispatch({
+          type: ADD_IDEA,
+          payload: input,
+        })
+      } catch (error) {
+        // TODO handle error
+      }
+    };
+
+
