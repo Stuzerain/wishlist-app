@@ -8,7 +8,8 @@ const createPeopleTable = `CREATE TABLE people(
 
 const createIdeasTable = `CREATE TABLE ideas(
   ideaID SERIAL PRIMARY KEY NOT NULL,
-  idea TEXT NOT NULL
+  idea TEXT NOT NULL,
+  notes TEXT
 )`;
 
 const createTagsTable = `CREATE TABLE tags(

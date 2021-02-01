@@ -11,7 +11,7 @@ import Col from 'react-bootstrap/Col';
 
 // redux imports
 import { useSelector, useDispatch } from 'react-redux';
-import { getPeople, selectPerson, toggleView } from './redux/actions.js';
+import { getPeople, selectPerson, toggleView, getIdeas } from './redux/actions.js';
 
 const Header = ( ) => {
   const dispatch = useDispatch();
@@ -23,6 +23,7 @@ const Header = ( ) => {
     <Dropdown.Item
       key={index}
       onClick={() => {
+        dispatch(getIdeas(person))
         dispatch(toggleView(true))
         dispatch(selectPerson(person))
       }}>

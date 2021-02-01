@@ -1,4 +1,5 @@
 import React from 'react';
+import IdeaBlock from './IdeaBlock.jsx';
 
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
@@ -8,15 +9,13 @@ import { useSelector } from 'react-redux';
 
 const InfoBlock = () => {
 
-  const { selected } = useSelector(s => s.home);
+  const { selected, ideas } = useSelector(s => s.home);
 
-  const mapper = (input) => {
-    return input.ideas.map((idea, index) => {
-      <Col key={index}>
-        {idea}
-      </Col>
-    })
-  }
+  const mapper = (input) =>
+    input.map((item, index) =>
+      <IdeaBlock item={item} key={index} />
+    )
+
 
   return (
     <Container style={{textAlign: 'center'}}>
@@ -24,9 +23,7 @@ const InfoBlock = () => {
         <Col>Name: {selected.name}</Col>
         <Col>Relationship: {selected.relationship}</Col>
       </Row>
-      <Row>
-        <Col>{ selected.ideas ? mapper(selected) : 'no ideas yet' }</Col>
-      </Row>
+        { ideas ? mapper(ideas) : 'no ideas yet' }
     </Container>
   )
 }

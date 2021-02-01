@@ -10,7 +10,7 @@ import Button from 'react-bootstrap/Button';
 import { useSelector, useDispatch } from 'react-redux';
 import { getPeople } from './redux/actions.js';
 
-const AddForm = () => {
+const AddPeopleForm = () => {
 
   const [name, setName] = useState('');
   const [relationship, setRelationship] = useState('');
@@ -48,9 +48,4 @@ const AddForm = () => {
     )
   }
 
-  export default AddForm;
-  // <Container style={{textAlign: 'center'}}>
-  //   <Row>
-  //     <Col>AddForm</Col>
-  //   </Row>
-  // </Container>
+  export default AddPeopleForm;

@@ -1,6 +1,7 @@
 import React from 'react';
 import InfoBlock from './InfoBlock.jsx';
-import AddForm from './AddForm.jsx';
+import AddPeopleForm from './AddPeopleForm.jsx';
+import AddIdeaForm from './AddIdeaForm.jsx';
 
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
@@ -18,23 +19,24 @@ const Body = () => {
     <Spinner animation='border' role='status' variant='primary' />
   )
 
-  let renderedInfo = () => (
-    <InfoBlock />
-  )
-
   if (view) {
     return (
       <Container>
         <Row style={{textAlign: 'center'}}>
           <Col>
-            {selected.name ? renderedInfo() : loadSpin()}
+            {selected.name ? <InfoBlock /> : loadSpin()}
+          </Col>
+        </Row>
+        <Row style={{textAlign: 'center'}}>
+          <Col>
+            <AddIdeaForm />
           </Col>
         </Row>
       </Container>
     )
   } else {
     return (
-      <AddForm />
+      <AddPeopleForm />
     )
   }
 }
