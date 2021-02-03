@@ -21,8 +21,8 @@ const createTagsTable = `CREATE TABLE tags(
 const createPeopleIdeaJoinTable = `CREATE TABLE peopleIdeaJoin(
   peopleID INT NOT NULL,
   ideaID INT NOT NULL,
-  FOREIGN KEY (peopleID) REFERENCES people(peopleID),
-  FOREIGN KEY (ideaID) REFERENCES ideas(ideaID),
+  FOREIGN KEY (peopleID) REFERENCES people(peopleID) ON DELETE CASCADE,
+  FOREIGN KEY (ideaID) REFERENCES ideas(ideaID) ON DELETE CASCADE,
   UNIQUE (peopleID, ideaID)
 )`;
 
@@ -30,8 +30,8 @@ const createPeopleIdeaJoinTable = `CREATE TABLE peopleIdeaJoin(
 const createIdeaTagJoinTable = `CREATE TABLE ideaTagJoin(
   ideaID INT NOT NULL,
   tagID INT NOT NULL,
-  FOREIGN KEY (ideaID) REFERENCES ideas(ideaID),
-  FOREIGN KEY (tagID) REFERENCES tags(tagID),
+  FOREIGN KEY (ideaID) REFERENCES ideas(ideaID) ON DELETE CASCADE,
+  FOREIGN KEY (tagID) REFERENCES tags(tagID) ON DELETE CASCADE,
   UNIQUE (ideaID, tagID)
 )`;
 

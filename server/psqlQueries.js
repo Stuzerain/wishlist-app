@@ -2,7 +2,7 @@ module.exports.getPeopleQuery = () =>
   `SELECT * FROM people`;
 
 module.exports.getSelectedIdeasQuery = (id) =>
-  `SELECT idea, notes FROM ideas
+  `SELECT idea, notes, ideaid FROM ideas
   NATURAL JOIN people
   NATURAL JOIN peopleideajoin
   WHERE peopleid = ${id}`;

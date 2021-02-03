@@ -23,6 +23,9 @@ const InfoBlock = () => {
         <Col>Name: {selected.name}</Col>
         <Col>Relationship: {selected.relationship}</Col>
       </Row>
+      <Row>
+        <Col>Click on an idea to view related notes</Col>
+      </Row>
         { ideas ? mapper(ideas) : 'no ideas yet' }
     </Container>
   )
