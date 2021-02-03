@@ -8,7 +8,8 @@ const { getPeopleQuery,
   peopleInsertQuery,
   ideaInsertQuery,
   peopleIdeaJoinInsert,
-  ideaDelete
+  ideaDelete,
+  peopleDelete,
   } = require('./psqlQueries.js');
 
 
@@ -58,6 +59,15 @@ app.post('/API/ideas', (req, res) => {
     .catch(err => {
       console.error(err);
       return res.status(400).send({error: 'error adding idea'});
+    })
+});
+
+app.delete('/API/people/:peopleid', (req, res) => {
+  pgres.query(peopleDelete(req.params.peopleid))
+    .then(() => res.json('successfully deleted person'))
+    .catch(err => {
+      console.error(err);
+      return res.status(400).send({error: 'error deleting person'});
     })
 });
 

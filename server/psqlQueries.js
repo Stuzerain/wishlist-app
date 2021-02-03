@@ -33,3 +33,6 @@ module.exports.peopleIdeaJoinInsert = (peopleid, ideaid) =>
 
 module.exports.ideaDelete = (ideaid) =>
   `DELETE FROM ideas WHERE ideaid = ${ideaid}`;
+
+module.exports.peopleDelete = (peopleid) =>
+  `DELETE FROM people WHERE peopleid = ${peopleid}`;
