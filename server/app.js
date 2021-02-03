@@ -7,7 +7,9 @@ const { getPeopleQuery,
   getSelectedIdeasQuery,
   peopleInsertQuery,
   ideaInsertQuery,
-  peopleIdeaJoinInsert } = require('./psqlQueries.js');
+  peopleIdeaJoinInsert,
+  ideaDelete
+  } = require('./psqlQueries.js');
 
 
 // middleware
@@ -57,7 +59,15 @@ app.post('/API/ideas', (req, res) => {
       console.error(err);
       return res.status(400).send({error: 'error adding idea'});
     })
+});
 
+app.delete('/API/ideas/:ideaid', (req, res) => {
+  pgres.query(ideaDelete(req.params.ideaid))
+    .then(() => res.json('successfully deleted idea'))
+    .catch(err => {
+      console.error(err);
+      return res.status(400).send({error: 'error deleting idea'});
+    })
 });
 
 app.get('/test', (req, res) => {

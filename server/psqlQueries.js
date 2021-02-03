@@ -29,4 +29,7 @@ module.exports.peopleIdeaJoinInsert = (peopleid, ideaid) =>
     ideaID
   ) VALUES (
     ${peopleid}, ${ideaid}
-  )`
+  )`;
+
+module.exports.ideaDelete = (ideaid) =>
+  `DELETE FROM ideas WHERE ideaid = ${ideaid}`;
